@@ -12,4 +12,7 @@ public class ErrorHandlerController {
     public ErrorApp exceptionError(Exception e) {
         return new ErrorApp(e.getMessage());
     }
+
+
+
 }

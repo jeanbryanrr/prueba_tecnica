@@ -10,10 +10,11 @@ import java.util.stream.Collectors;
 public class UsuarioMapper {
 
     public static User toEntity(UsuarioDTO dto) {
+
         User usuario = new User();
         usuario.setName(dto.getName());
         usuario.setPassword(dto.getPassword());
-
+        usuario.setEmail(dto.getEmail());
 
         List<Phone> phones = new ArrayList<>();
         for (TelefonoDTO telefonoDTO : dto.getPhones()) {

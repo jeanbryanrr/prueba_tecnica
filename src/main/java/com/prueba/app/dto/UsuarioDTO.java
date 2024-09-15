@@ -6,6 +6,7 @@ public class UsuarioDTO {
 
     private String name;
     private String password;
+    private String email;
     private List<TelefonoDTO> phones;
 
 
@@ -31,5 +32,13 @@ public class UsuarioDTO {
 
     public void setPhones(List<TelefonoDTO> phones) {
         this.phones = phones;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
