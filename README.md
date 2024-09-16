@@ -1,7 +1,7 @@
 Prueba Técnia de Java
 ==============
 
-Este proyecto es una aplicación de prueba desarrollada en Java. A continuación, se detallan los pasos para descargar, ejecutar y probar la aplicación.
+Este proyecto es una aplicación de prueba desarrollada en Java y desplegadoo en AWS. A continuación, se detallan los pasos para descargar, ejecutar y probar la aplicación.
 
 Descargar el Proyecto
 ---------------------
@@ -32,9 +32,9 @@ Para registrar un nuevo usuario, realiza una solicitud POST a ec2-54-226-159-158
 
 `{"name": "Bryan","email": "bryand@gmail.com",  "password": "adminA1", "phones": [ {"number": "987654321",  "citycode": "1","countrycode": "USA"},{"number": "91248454",  "citycode": "2","countrycode": "ESPAÑA" }      ]  }`
 
-### Listar todos los Usuarios (servicio requerido con token)
+### Listar todos los Usuarios (servicio requerido con token )
 
-Para probar el endpoint de listarUsuarios, realiza una solicitud POST a ec2-54-226-159-158.compute-1.amazonaws.com:8001/listarUsuarios con el siguiente cuerpo JSON:
+Para probar el endpoint de listarUsuarios, realiza una solicitud POST a ec2-54-226-159-158.compute-1.amazonaws.com:8001/listarUsuarios
 
 
 
