@@ -1,7 +1,7 @@
 package com.prueba.app.controllers;
 
 import com.prueba.app.dto.LoginDto;
-import com.prueba.app.dto.UsuarioDTO;
+import com.prueba.app.dto.UserDTO;
 import com.prueba.app.dto.UsuarioMapper;
 import com.prueba.app.exceptions.AppException;
 import com.prueba.app.model.AuthResponse;
@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 public class UserController {
@@ -41,21 +40,20 @@ public class UserController {
         return this.userService.findAll();
     }
 
-
     @PostMapping("/registrarUsuario")
-    public ResponseEntity<UserResponse> registrarUsuario(@RequestBody UsuarioDTO usuarioDTO) {
+    public ResponseEntity<UserResponse> registrarUsuario(@RequestBody UserDTO userDTO) {
 
-        boolean emailValido = Util.validarValorExpresionRegular(usuarioDTO.getEmail(), EMAIL_REGEX);
+        boolean emailValido = Util.validarValorExpresionRegular(userDTO.getEmail(), EMAIL_REGEX);
         if (!emailValido) {
             throw new AppException("El correo no es válido");
         }
 
-        boolean claveValida = Util.validarValorExpresionRegular(usuarioDTO.getPassword(), claveValidaRegex);
+        boolean claveValida = Util.validarValorExpresionRegular(userDTO.getPassword(), claveValidaRegex);
         if (!claveValida) {
             throw new AppException("La clave no es segura");
         }
 
-        User usuario = UsuarioMapper.toEntity(usuarioDTO);
+        User usuario = UsuarioMapper.toEntity(userDTO);
 
         return ResponseEntity.ok(userService.save(usuario));
 

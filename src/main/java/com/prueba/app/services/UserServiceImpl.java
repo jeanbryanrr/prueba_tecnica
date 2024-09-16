@@ -22,6 +22,7 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
+    private DateTimeFormatter formatter;
     private final UserRepository userRepository;
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
@@ -36,6 +37,8 @@ public class UserServiceImpl implements UserService {
         this.jwtService = jwtService;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
+
+        this.formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
     }
 
 
@@ -70,8 +73,6 @@ public class UserServiceImpl implements UserService {
         userRepository.actualizarTokenPorIdUsuario(userCreated.getId(), userCreated.getToken());
 
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
-
         UserResponse userResponse = new UserResponse();
         userResponse.setIsActive(userCreated.getIsactive());
         userResponse.setId(userCreated.getId().toString());
@@ -79,6 +80,7 @@ public class UserServiceImpl implements UserService {
         userResponse.setLastLogin(formatter.format(userCreated.getLastLogin()));
         userResponse.setModified(formatter.format(userCreated.getModified()));
         userResponse.setCreated(formatter.format(userCreated.getCreated()));
+
         return userResponse;
     }
 

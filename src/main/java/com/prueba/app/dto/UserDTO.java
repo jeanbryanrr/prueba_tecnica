@@ -2,12 +2,12 @@ package com.prueba.app.dto;
 
 import java.util.List;
 
-public class UsuarioDTO {
+public class UserDTO {
 
     private String name;
     private String password;
     private String email;
-    private List<TelefonoDTO> phones;
+    private List<PhoneDTO> phones;
 
 
     public String getName() {
@@ -26,11 +26,11 @@ public class UsuarioDTO {
         this.password = password;
     }
 
-    public List<TelefonoDTO> getPhones() {
+    public List<PhoneDTO> getPhones() {
         return phones;
     }
 
-    public void setPhones(List<TelefonoDTO> phones) {
+    public void setPhones(List<PhoneDTO> phones) {
         this.phones = phones;
     }
 

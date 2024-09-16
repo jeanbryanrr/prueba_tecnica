@@ -1,2 +1,2 @@
-INSERT INTO usuarios (id, name, password) VALUES ('b2e5e8b7-c9fe-4e2e-82e3-5e41762b4c9a', 'John Doe', 'password123');
-INSERT INTO telefonos (id, number, citycode, countrycode, user_id) VALUES ('e60b9fa2-d4a5-44d6-a8de-cb935a2d1abc', '987654321', '1', 'USA', 'b2e5e8b7-c9fe-4e2e-82e3-5e41762b4c9a');
+INSERT INTO users (id, name, email, created, modified, last_login, token, isactive,password)VALUES ('e3a7861d-5e4f-4405-bcce-3848b2899a9f','Bryan','bryan@gmail.com','2024-09-15 19:26:47.1657','2024-09-15 19:26:47.1657','2024-09-15 19:26:47.1657','',true,'$2a$10$Uyn8S9Elt0ftFI8wjXZ5SOLV3TuIcTT2nXyX8p/sfl50P4euAjLxG');
+INSERT INTO phones (id, user_id, number, citycode, countrycode) VALUES ('9a2f1311-47c1-4ae3-932c-d56dbffb8603', 'e3a7861d-5e4f-4405-bcce-3848b2899a9f', '987654321', '1', 'USA');

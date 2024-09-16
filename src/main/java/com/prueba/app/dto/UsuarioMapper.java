@@ -5,11 +5,10 @@ import com.prueba.app.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class UsuarioMapper {
 
-    public static User toEntity(UsuarioDTO dto) {
+    public static User toEntity(UserDTO dto) {
 
         User usuario = new User();
         usuario.setName(dto.getName());
@@ -17,11 +16,11 @@ public class UsuarioMapper {
         usuario.setEmail(dto.getEmail());
 
         List<Phone> phones = new ArrayList<>();
-        for (TelefonoDTO telefonoDTO : dto.getPhones()) {
+        for (PhoneDTO phoneDTO : dto.getPhones()) {
             Phone telefono = new Phone();
-            telefono.setNumber(telefonoDTO.getNumber());
-            telefono.setCitycode(telefonoDTO.getCitycode());
-            telefono.setCountrycode(telefonoDTO.getCountrycode());
+            telefono.setNumber(phoneDTO.getNumber());
+            telefono.setCitycode(phoneDTO.getCitycode());
+            telefono.setCountrycode(phoneDTO.getCountrycode());
             telefono.setUser(usuario);
             phones.add(telefono);
         }

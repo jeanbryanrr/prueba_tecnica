@@ -1,6 +1,6 @@
 package com.prueba.app.dto;
 
-public class TelefonoDTO {
+public class PhoneDTO {
     private String number;
     private String citycode;
     private String countrycode;
