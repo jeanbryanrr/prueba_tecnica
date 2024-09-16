@@ -11,6 +11,17 @@ Descargar el Proyecto
 2.  git clone https://github.com/jeanbryanrr/prueba_tecnica
 
 
+Caso de Uso y solución del reto
+--------------------
+
+### Caso de uso
+
+![](./casodeuso.png)
+
+### Solución
+
+![](./solucion.png)
+
 Construir y Ejecutar la Aplicación
 ----------------------------------
 
@@ -38,6 +49,9 @@ Para registrar un nuevo usuario, realiza una solicitud POST a
 
 Para probar el endpoint de listarUsuarios, realiza una solicitud POST a
 `ec2-54-226-159-158.compute-1.amazonaws.com:8001/listarUsuarios`
+
+
+
 
 
 
