@@ -1,9 +1,12 @@
 package com.prueba.app.controllers;
 
+import com.prueba.app.dto.LoginDto;
 import com.prueba.app.dto.UsuarioDTO;
 import com.prueba.app.dto.UsuarioMapper;
 import com.prueba.app.exceptions.AppException;
+import com.prueba.app.model.AuthResponse;
 import com.prueba.app.model.User;
+import com.prueba.app.model.UserResponse;
 import com.prueba.app.services.UserService;
 import com.prueba.app.util.Util;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,8 +24,15 @@ public class UserController {
     private String claveValidaRegex;
     private UserService userService;
 
+
     public UserController(UserService userService) {
         this.userService = userService;
+    }
+
+
+    @PostMapping("/login")
+    public ResponseEntity<AuthResponse> login(@RequestBody LoginDto loginDto) {
+        return ResponseEntity.ok(this.userService.login(loginDto));
     }
 
     @GetMapping("/listarUsuarios")
@@ -33,7 +43,7 @@ public class UserController {
 
 
     @PostMapping("/registrarUsuario")
-    public ResponseEntity<User> registrarUsuario(@RequestBody UsuarioDTO usuarioDTO) {
+    public ResponseEntity<UserResponse> registrarUsuario(@RequestBody UsuarioDTO usuarioDTO) {
 
         boolean emailValido = Util.validarValorExpresionRegular(usuarioDTO.getEmail(), EMAIL_REGEX);
         if (!emailValido) {
@@ -46,8 +56,8 @@ public class UserController {
         }
 
         User usuario = UsuarioMapper.toEntity(usuarioDTO);
-        User savedUsuario = userService.save(usuario);
-        return ResponseEntity.ok(savedUsuario);
+
+        return ResponseEntity.ok(userService.save(usuario));
 
     }
 
