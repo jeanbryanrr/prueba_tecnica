@@ -88,7 +88,12 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public AuthResponse login(LoginDto loginDto) {
         LocalDateTime created = LocalDateTime.now();
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getEmail(), loginDto.getPassword()));
+        try {
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getEmail(), loginDto.getPassword()));
+        } catch (Exception x) {
+            throw new AppException("Usuario inválido");
+        }
+
         User user = userRepository.buscarUsuarioPorEmail(loginDto.getEmail()).orElseThrow(() -> new AppException("Usuario inválido"));
         String token = jwtService.getToken(user);
 

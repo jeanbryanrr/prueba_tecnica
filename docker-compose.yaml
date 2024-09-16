@@ -1,10 +1,7 @@
 services:
   msvc-usuarios:
     container_name: msvc-usuarios
-    #    image: elreyhamlet/usuarios
-    build:
-      context: ./
-      dockerfile: ./Dockerfile
+    image: elreyhamlet/prueba
     ports:
       - "8001:8001"
     restart: always
