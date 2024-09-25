@@ -18,9 +18,12 @@ import java.util.List;
 @RestController
 public class UserController {
 
-    private static final String EMAIL_REGEX = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$";
     @Value("${password.validation.regex.regexp}")
     private String claveValidaRegex;
+
+    @Value("${email.validation.regex.regexp}")
+    private String emailValidaRegex;
+
     private UserService userService;
 
 
@@ -43,7 +46,7 @@ public class UserController {
     @PostMapping("/registrarUsuario")
     public ResponseEntity<UserResponse> registrarUsuario(@RequestBody UserDTO userDTO) {
 
-        boolean emailValido = Util.validarValorExpresionRegular(userDTO.getEmail(), EMAIL_REGEX);
+        boolean emailValido = Util.validarValorExpresionRegular(userDTO.getEmail(), emailValidaRegex);
         if (!emailValido) {
             throw new AppException("El correo no es válido");
         }
